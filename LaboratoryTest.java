@@ -61,7 +61,7 @@ public class LaboratoryTest extends JFrame {
         rep_area.setEditable(false);
         add(new JScrollPane(rep_area));
 
-        // ---------- GUI Colors ----------
+        // GUI of colors, texts and buttons
         getContentPane().setBackground(Color.BLACK);
 
         Color fgColor = Color.white;
@@ -95,7 +95,7 @@ public class LaboratoryTest extends JFrame {
         clearBtn.setBackground(Color.red);
         clearBtn.setForeground(Color.BLACK);
 
-        // make all labels yellow
+    
         for (Component comp : getContentPane().getComponents()) {
             if (comp instanceof JLabel) {
                 comp.setForeground(fgColor);
@@ -104,14 +104,14 @@ public class LaboratoryTest extends JFrame {
 
         runBtn.addActionListener(e -> {
             try {
-                // Create a Patient
+                //this block of code Create a Patient record using the inputs provided by the user
                 Patient p = new Patient(nameIn.getText(), Integer.parseInt(ageIn.getText()), (String)sexIn.getSelectedItem());
                 
                 //Create Test based on chosen test of the user
                 LabTest test;
                 String sel = (String)testIn.getSelectedItem();
 
-                //test selection 
+                //test selection based on the users choice
                 if (sel == "FBS") {
                     test = new FastingBloodSugar();
                 } else if (sel == "RBS") {
@@ -165,6 +165,7 @@ public class LaboratoryTest extends JFrame {
                 JOptionPane.showMessageDialog(this, "Invalid Input!");
             }
         });
+        //resets the system if the user want to try again
 
         clearBtn.addActionListener(e -> {
             nameIn.setText(""); ageIn.setText(""); resultIn.setText(""); rep_area.setText("");
